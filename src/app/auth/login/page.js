@@ -13,16 +13,16 @@ let validationSchema = yup.object({
 
 const Login = () => {
     const router = useRouter();
-    const {setError, reset, register, handleSubmit, formState: {errors}} = useForm({
+    const {setError, register, handleSubmit, formState: {errors}} = useForm({
         resolver: yupResolver(validationSchema)
     });
-
     const handleFormSubmit = async data => {
+        
         signIn('credentials', {
             email: data.email,
             password: data.password,
             redirect: false,
-            callbackUrl: '/'
+            // callbackUrl: '/'
         }).then((res) => {
             if(res?.error) {
                 setError('email', {message: "Something went wrong.", type: "error"})
@@ -34,7 +34,7 @@ const Login = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit(handleFormSubmit)} autoComplete="off">
+            <form onSubmit={handleSubmit(handleFormSubmit)} autoComplete="on">
                 <div className="mb-2">
                     <label htmlFor="email"
                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>

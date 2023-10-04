@@ -5,7 +5,6 @@ import Link from "next/link";
 
 const Navbar = () => {
     const {data: session, status} = useSession();
-
     if(status == 'loading') {
         return null;
     }
